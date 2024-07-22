@@ -1,0 +1,11 @@
+<!-- reservations/templates/reservations/find_bus.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Find a Bus</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+{% endblock %}

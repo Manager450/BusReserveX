@@ -1,0 +1,17 @@
+<!-- reservations/templates/reservations/payment.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Payment</h2>
+<p>Booking ID: {{ booking.id }}</p>
+<p>Total Fare: {{ booking.bus.fare }}</p>
+<form method="post" action="{% url 'confirmation' booking.id %}">
+    {% csrf_token %}
+    <label for="payment_method">Choose payment method:</label>
+    <select id="payment_method" name="payment_method" required>
+        <option value="mobile_money">Mobile Money</option>
+        <option value="bank">Bank</option>
+    </select>
+    <button type="submit">Pay Now</button>
+</form>
+{% endblock %}

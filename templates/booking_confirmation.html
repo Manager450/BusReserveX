@@ -1,0 +1,13 @@
+<!-- reservations/templates/reservations/booking_confirmation.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Booking Confirmation</h2>
+<p>Thank you for your booking!</p>
+<p>Bus Operator: {{ booking.bus.operator }}</p>
+<p>Departure: {{ booking.bus.departure_time }} | Arrival: {{ booking.bus.arrival_time }}</p>
+<p>Seats Reserved: {{ booking.seats_reserved }}</p>
+<p>Fare: {{ booking.bus.fare }}</p>
+<a href="{% url 'find_bus' %}">Book Another Bus</a>
+<a href="{% url 'payment' booking.id %}">Proceed to Payment</a>
+{% endblock %}

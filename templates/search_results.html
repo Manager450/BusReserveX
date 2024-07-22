@@ -1,0 +1,21 @@
+<!-- reservations/templates/reservations/search_results.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Available Buses</h2>
+{% if buses %}
+    {% for bus in buses %}
+        <div>
+            <h3>{{ bus.operator }}</h3>
+            <p>Departure: {{ bus.departure_time }} | Arrival: {{ bus.arrival_time }}</p>
+            <p>Duration: {{ bus.route.duration }}</p>
+            <p>Available Seats: {{ bus.available_seats }}</p>
+            <p>Fare: {{ bus.fare }}</p>
+            <a href="{% url 'select_seats' bus.id date %}">Select</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No buses available for the selected route and date.</p>
+{% endif %}
+{% endblock %}
+
